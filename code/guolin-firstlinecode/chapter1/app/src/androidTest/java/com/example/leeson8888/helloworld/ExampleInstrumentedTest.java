@@ -1,4 +1,4 @@
-package com.example.leeson8888.helloword;
+package com.example.leeson8888.helloworld;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getTargetContext();
 
-        assertEquals("com.example.leeson8888.helloword", appContext.getPackageName());
+        assertEquals("com.example.leeson8888.helloworld", appContext.getPackageName());
     }
 }

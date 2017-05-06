@@ -1,4 +1,4 @@
-package com.example.leeson8888.helloword;
+package com.example.leeson8888.helloworld;
 
 import org.junit.Test;
 

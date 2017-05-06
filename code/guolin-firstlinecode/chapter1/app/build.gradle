@@ -1,16 +1,24 @@
+// apply plugin:应用一个插件
+// com.android.application：表示这是一个应用程序模块，com.android.library：表示这是一个库模块
+// 应用程序模块可以直接运行，库模块只能用作依赖
+
 apply plugin: 'com.android.application'
 
+// android闭包配置项目构建的各种属性
+// 24: 表示使用android 7.0的sdk进行编译
+// buildToolsVersion: 指定构建工具的版本
 android {
     compileSdkVersion 24
     buildToolsVersion "25.0.3"
     defaultConfig {
-        applicationId "com.example.leeson8888.helloword"
+        applicationId "com.example.leeson8888.helloworld"
         minSdkVersion 15
         targetSdkVersion 24
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
+    // buildTypes: 指定生成安装文件的配置
     buildTypes {
         release {
             minifyEnabled false
@@ -18,12 +26,14 @@ android {
         }
     }
 }
-
+// dependencies: 指定当前项目的所有依赖关系：本地依赖，库依赖，远程依赖
 dependencies {
+    //本地依赖
     compile fileTree(dir: 'libs', include: ['*.jar'])
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
+    //远程依赖
     compile 'com.android.support:appcompat-v7:24.2.1'
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
     testCompile 'junit:junit:4.12'
