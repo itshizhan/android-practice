@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">ActivityTest</string>
+    <string name="menu_item_add">Add</string>
+    <string name="menu_item_remove">Remove</string>
 </resources>
