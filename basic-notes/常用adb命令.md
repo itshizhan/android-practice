@@ -22,6 +22,8 @@ adb即：android debug bridge，一个Debug工具，可以看成是一套调试a
 - adb logcat -f <filename>： 输出log到指定文件
 
 ### adb start/kill-server: 启动杀死server进程
+
+### 其他指令
 - adb shell screencap： 截屏
 
 例如：截屏后拉去到本地
@@ -31,8 +33,6 @@ adb pull /sdcard/screen.png ~/temp
 ```
 - adb shell screenrecord：屏幕录制，可以做成演示demo
 
-
-### 其他指令
 
 ### 更多指令
 请`adb help` 查询
