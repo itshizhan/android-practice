@@ -16,7 +16,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         TextView textView = (TextView) findViewById(text_view);
-        textView.setText("hello android");
+        textView.setText("hello android！");
 
         //2 : 使用匿名内容部类
 
