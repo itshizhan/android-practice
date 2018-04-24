@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -38,8 +39,9 @@ public class QuizActivity extends AppCompatActivity {
 
         Button trueButton = (Button) findViewById(R.id.true_button);
         Button falseButton = this.<Button>findViewById(R.id.false_button);
-        Button nextButton = this.<Button>findViewById(next_button);
-        mQuestionTextView  = findViewById(R.id.question_text_view);
+        ImageButton nextButton = this.<ImageButton>findViewById(R.id.next_button);
+        ImageButton prevButton = this.<ImageButton>findViewById(R.id.prev_button);
+        mQuestionTextView  = this.<TextView>findViewById(R.id.question_text_view);
         // 更新题目展示
         updateQuestion();
 
@@ -69,7 +71,31 @@ public class QuizActivity extends AppCompatActivity {
             }
         });
 
+        // 下一题
         nextButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mCurrentIndex = (mCurrentIndex + 1) % mQuestionBank.length;
+                updateQuestion();
+            }
+        });
+
+        // 上一题
+        prevButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(mCurrentIndex==0){
+                    mCurrentIndex =  mQuestionBank.length-1;
+                }else{
+                    mCurrentIndex = (mCurrentIndex - 1) % mQuestionBank.length;
+                }
+
+                updateQuestion();
+            }
+        });
+
+        // 同样是下一题
+        mQuestionTextView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 mCurrentIndex = (mCurrentIndex + 1) % mQuestionBank.length;
