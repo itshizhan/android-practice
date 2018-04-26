@@ -6,4 +6,4 @@
 
 每次转换时，都有相应的方法发送消息，通知Activity。
 
-<img src="/usr/local/var/www/gitclone/android-practice/AndroidProgrammingGuide/notes/images/android-lifecycle.png"/>
+<img src="https://github.com/itshizhan/android-practice/blob/master/AndroidProgrammingGuide/notes/images/android-lifecycle.png?raw=true"/>
