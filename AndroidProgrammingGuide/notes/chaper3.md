@@ -72,6 +72,19 @@ public class QuizActivity extends AppCompatActivity{
 5. 现在点击最近应用键, 即最右边的方格键，从中点击GeoQuiz应用，视图再次出现，依次调用了 onStart()->onResume()方法。此时不会调用onCreate,因为一直在内存中。
 6. 旋转屏幕，会依次调用onStop()->onDestroy()->然后重复第一步。即系统会销毁当前Activity实例，然后创建一个新的Activity实例。
 
+
+
+旋转屏幕时的日志如下所示：
+```java
+05-04 08:32:08.269 5486-5486/com.itshizhan.geoquiz D/QuizActivity: onStop……
+      onDestroy……
+05-04 08:32:08.302 5486-5486/com.itshizhan.geoquiz D/QuizActivity: onCreate……
+05-04 08:32:08.306 5486-5486/com.itshizhan.geoquiz D/QuizActivity: onStart……
+05-04 08:32:08.309 5486-5486/com.itshizhan.geoquiz D/QuizActivity: onResume……
+```
+
+
+
 #### 设备旋转时保存数据
 若需要在设备旋转时保存数据，需要覆盖Activity 的 onSaveInstanceState()方法。
 
@@ -83,10 +96,16 @@ protected void onSaveInstanceState(Bundle savedInstanceState){
 }
 // 获取数据
 protected void onCreate(Bundle savedinstanceState) { 	
-	……
+
+	super.onCreate(savedInstanceState);
+	setContentView(R.layout.activity_quiz);
+	Log.d(TAG,"onCreate……");
+	// 必须放在initView()方法之前。
 	if (savedInstanceState != null) {
-		mCurrentIndex = savedInstanceState.getInt(KEY_INDEX, 0); 
+			mCurrentIndex = savedInstanceState.getInt(KEY_INDEX, 0);
 	}
+
+	initView();
 	...
 }
 
