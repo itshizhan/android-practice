@@ -4,18 +4,21 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.TextView;
-import android.widget.Toast;
 
 //AppCompatActivity是FragmentActivity的子类, FragmentActivity是Activity的子类
-public class CrimeActivity extends AppCompatActivity {
+public class CrimeActivity extends SingleFragmentActivity {
+
+    @Override
+    protected Fragment createFragment() {
+        return new CrimeFragment();
+    }
 
 
+    /***
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_crime);
+        setContentView(R.layout.activity_fragment);
 
         //将fragment添加给activity
         FragmentManager fm = getSupportFragmentManager();
@@ -37,4 +40,7 @@ public class CrimeActivity extends AppCompatActivity {
 
 
     }
+
+    **/
+
 }
