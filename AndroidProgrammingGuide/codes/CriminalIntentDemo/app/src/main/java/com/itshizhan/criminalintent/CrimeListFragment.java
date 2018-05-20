@@ -7,6 +7,7 @@ import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.format.DateFormat;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,6 +21,7 @@ import java.util.List;
 public class CrimeListFragment extends Fragment {
     private RecyclerView mCrimeRecyclerView;
     private CrimeAdapter mAdapter;
+    private int mPosition;
 
 
     @Nullable
@@ -38,13 +40,26 @@ public class CrimeListFragment extends Fragment {
 
     }
 
+    //要保证fragment视图得到刷新，在onResume()方法内更新代码是最安全的选择
+    @Override
+    public void onResume() {
+        super.onResume();
+        updateUI();
+    }
+
     private void updateUI() {
         //获取数据
         CrimeLab crimeLab = CrimeLab.get(getActivity());
         List<Crime> crimes = crimeLab.getCrimes();
         //关联数据
-        mAdapter = new CrimeAdapter(crimes);
-        mCrimeRecyclerView.setAdapter(mAdapter);
+        if(mAdapter==null){
+            mAdapter = new CrimeAdapter(crimes);
+            mCrimeRecyclerView.setAdapter(mAdapter);
+        }else{
+            // mAdapter.notifyDataSetChanged();
+            mAdapter.notifyItemChanged(mPosition);
+        }
+
 
     }
 
@@ -73,8 +88,10 @@ public class CrimeListFragment extends Fragment {
 
         @Override
         public void onBindViewHolder(CrimeHolder holder, int position) {
+            //mPosition = position;
             Crime crime  = mCrimes.get(position);
             holder.bind(crime);
+
         }
 
 
@@ -101,6 +118,7 @@ public class CrimeListFragment extends Fragment {
             mSolvedImageView = (ImageView) itemView.findViewById(R.id.crime_solved);
             // 绑定点击事件
             itemView.setOnClickListener(this);
+
         }
 
         public void bind(Crime crime){
@@ -123,7 +141,11 @@ public class CrimeListFragment extends Fragment {
             //Toast.makeText(getActivity(),mCrime.getTitle()+" clicked",Toast.LENGTH_SHORT).show();
             //Intent intent  = new Intent(getActivity(),CrimeActivity.class);
             //intent.putExtra(EXTRA_CRIME_ID,mCrime.getId());
-            Intent intent = CrimeActivity.newIntent(getActivity(), mCrime.getId());
+            //启动CrimeActivity
+            //Intent intent = CrimeActivity.newIntent(getActivity(), mCrime.getId());
+            // 启动CrimePagerActivity
+            Intent intent = CrimePagerActivity.newIntent(getActivity(),mCrime.getId());
+            mPosition = this.getAdapterPosition();
             startActivity(intent);
         }
 
