@@ -27,6 +27,7 @@ public class CrimeLab {
         mCrimes = new ArrayList<>();
 
         // 暂时生成100个毫无个性的数据
+        /*
         for (int i = 0; i < 100; i++) {
             Crime crime = new Crime();
             crime.setTitle("Crime #" + i);
@@ -34,6 +35,7 @@ public class CrimeLab {
             mCrimes.add(crime);
 
         }
+        */
 
     }
 
@@ -50,6 +52,10 @@ public class CrimeLab {
             }
         }
         return null;
+    }
+    //添加一项新的crime
+    public void addCrime(Crime c){
+        mCrimes.add(c);
     }
 
 }
