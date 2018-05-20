@@ -1,6 +1,7 @@
 package com.itshizhan.criminalintent;
 
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -62,4 +63,6 @@ public class CrimePagerActivity extends AppCompatActivity{
         }
 
     }
+
+
 }
