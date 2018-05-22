@@ -54,6 +54,12 @@ public class CrimeFragment extends Fragment {
         mCrime = CrimeLab.get(getActivity()).getCrime(crimeId);
     }
 
+    @Override
+    public void onPause() {
+        super.onPause();
+        CrimeLab.get(getActivity()) .updateCrime(mCrime);
+    }
+
     /**
      * 实例化fragment 视图的布局,然后将实例化的View返回给托管activity。
      * @param inflater
