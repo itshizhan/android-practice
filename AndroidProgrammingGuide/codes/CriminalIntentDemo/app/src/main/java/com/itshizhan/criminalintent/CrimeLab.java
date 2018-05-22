@@ -13,143 +13,96 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
+import static com.itshizhan.criminalintent.database.CrimeDbSchema.CrimeTable.Cols.UUID;
+import static com.itshizhan.criminalintent.database.CrimeDbSchema.CrimeTable.Cols.DATE;
+import static com.itshizhan.criminalintent.database.CrimeDbSchema.CrimeTable.Cols.SOLVED;
+import static com.itshizhan.criminalintent.database.CrimeDbSchema.CrimeTable.Cols.TITLE;
+
 // 单例： 私有构造方法和 get 方法
 public class CrimeLab {
-    // 静态变量
     private static CrimeLab sCrimeLab;
-    //private List<Crime> mCrimes;
     private Context mContext;
-    private SQLiteDatabase mSQLiteDatabase;
+    private SQLiteDatabase mDatabase;
 
-    // 初始化数据外部接口
-    public static CrimeLab get(Context context){
-        if(sCrimeLab==null){
+    public static CrimeLab get(Context context) {
+        if (sCrimeLab == null) {
             sCrimeLab = new CrimeLab(context);
         }
-        return  sCrimeLab;
+
+        return sCrimeLab;
     }
 
-    // 创建数据库表字段的值
-    private static ContentValues getContentValues(Crime crime){
-        ContentValues contentValues = new ContentValues();
-        contentValues.put(CrimeTable.Cols.UUID,crime.getId().toString());
-        contentValues.put(CrimeTable.Cols.TITLE,crime.getTitle());
-        contentValues.put(CrimeTable.Cols.DATE,crime.getDate().getTime());
-        contentValues.put(CrimeTable.Cols.SOLVED,crime.isSolved()?1:0);
-
-        return contentValues;
-    }
-    // 初始化数据底层实现
     private CrimeLab(Context context) {
-        //<>符号告诉编译器，List中的元素类型可以基于变量声明传入的抽象参数来确定。
-        //Java 7之前，必须这么写:mCrimes = new ArrayList<Crime>();
-        //mCrimes = new ArrayList<>();
         mContext = context.getApplicationContext();
-        mSQLiteDatabase = new CrimeBaseHelper(mContext).getWritableDatabase();
-
-        /** getWritableDatabase()
-         * 打开crimeBase.db数据库，如果不存在则创建
-         * 如果是首次创建数据库，就调用onCreate(SQLiteDatabase)方法，然后保存最新的版本号。
-         * 如果已创建过数据库，首先检查它的版本号。如果CrimeBaseHelper中的版本号更高，
-         * 就调用onUpgrade(SQLiteDatabase, int, int)方法升级
-         * onCreate(SQLiteDatabase)方法负责创建初始数据库;
-         * onUpgrade- (SQLiteDatabase, int, int)方法负责与升级相关的工作。
-         * */
-
-        // 暂时生成100个毫无个性的数据
-        /*
-        for (int i = 0; i < 100; i++) {
-            Crime crime = new Crime();
-            crime.setTitle("Crime #" + i);
-            crime.setSolved(i % 2 == 0);
-            mCrimes.add(crime);
-
-        }
-        */
+        mDatabase = new CrimeBaseHelper(mContext)
+                .getWritableDatabase();
 
     }
 
-    // 获取所有数据
-    public List<Crime> getCrimes(){
+    public void addCrime(Crime c) {
+        ContentValues values = getContentValues(c);
+        mDatabase.insert(CrimeTable.NAME, null, values);
+    }
+
+    public List<Crime> getCrimes() {
         List<Crime> crimes = new ArrayList<>();
-        CrimeCursorWrapper crimeCursorWrapper = queryCrimes(null,null);
+        CrimeCursorWrapper cursor = queryCrimes(null, null);
         try {
-            crimeCursorWrapper.moveToFirst();
-            while (!crimeCursorWrapper.isAfterLast()){
-                crimes.add(crimeCursorWrapper.getCrime());
-                crimeCursorWrapper.moveToNext();
+            cursor.moveToFirst();
+            while (!cursor.isAfterLast()) {
+                crimes.add(cursor.getCrime());
+                cursor.moveToNext();
             }
-        }finally {
-            crimeCursorWrapper.close();
-        }
-        return new ArrayList<>();
-    }
-
-    // 根据Id获取数据
-    public Crime getCrime(UUID id){
-        /*
-        for(Crime crime:mCrimes){
-            if(crime.getId().equals(id)){
-                return crime;
-            }
-        }
-        */
-        CrimeCursorWrapper cursor = queryCrimes(
-                CrimeTable.Cols.UUID + " = ?",
-                new String[] { id.toString() } );
-        try{
-            if(cursor.getCount()==0){
-                return  null;
-            }else{
-                cursor.moveToFirst();
-                return  cursor.getCrime();
-            }
-        }finally {
+        } finally {
             cursor.close();
         }
-
-    }
-    //向数据库添加一项新的crime
-    public void addCrime(Crime c){
-        //mCrimes.add(c);
-        ContentValues contentValues = getContentValues(c);
-        mSQLiteDatabase.insert(CrimeTable.NAME,null,contentValues);
+        return crimes;
     }
 
-    //更新数据库记录
-    public void updateCrime(Crime crime){
-        String uuidString = crime.getId().toString();
-        ContentValues contentValues = getContentValues(crime);
-        mSQLiteDatabase.update(CrimeTable.NAME,contentValues,CrimeTable.Cols.UUID+" =?",
-                new String[]{uuidString});
-
-    }
-
-    //查询数据
-    private Cursor queryCrimesOld(String whereClause,String [] whereArgs){
-        Cursor cursor = mSQLiteDatabase.query(
-                CrimeTable.NAME,
-                null, // null : 查询所有列
-                whereClause,
-                whereArgs,
-                null,
-                null,
-                null
+    public Crime getCrime(UUID id) {
+        CrimeCursorWrapper cursor = queryCrimes(
+                CrimeTable.Cols.UUID + " = ?",
+                new String[]{id.toString()}
         );
-        return cursor;
+        try {
+            if (cursor.getCount() == 0) {
+                return null;
+            }
+            cursor.moveToFirst();
+            return cursor.getCrime();
+        } finally {
+            cursor.close();
+        }
     }
 
-    private CrimeCursorWrapper queryCrimes(String whereClause, String [] whereArgs){
-        Cursor cursor = mSQLiteDatabase.query(
+    public void updateCrime(Crime crime) {
+        String uuidString = crime.getId().toString();
+        ContentValues values = getContentValues(crime);
+        mDatabase.update(CrimeTable.NAME, values,
+                CrimeTable.Cols.UUID + " = ?",
+                new String[]{uuidString});
+    }
+
+    private CrimeCursorWrapper queryCrimes(String whereClause, String[] whereArgs) {
+        Cursor cursor = mDatabase.query(
                 CrimeTable.NAME,
-                null, // null : 查询所有列
+                null, // Columns - null selects all columns
                 whereClause,
                 whereArgs,
-                null,
-                null,
-                null
+                null, // groupBy
+                null, // having
+                null  // orderBy
         );
         return new CrimeCursorWrapper(cursor);
+    }
+
+    private static ContentValues getContentValues(Crime crime) {
+        ContentValues values = new ContentValues();
+        values.put(UUID, crime.getId().toString());
+        values.put(TITLE, crime.getTitle());
+        values.put(DATE, crime.getDate().getTime());
+        values.put(SOLVED, crime.isSolved() ? 1 : 0);
+        return values;
     }
 
 }
