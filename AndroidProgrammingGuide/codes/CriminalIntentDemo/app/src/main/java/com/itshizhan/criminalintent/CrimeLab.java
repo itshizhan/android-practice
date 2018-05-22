@@ -6,6 +6,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
 import com.itshizhan.criminalintent.database.CrimeBaseHelper;
+import com.itshizhan.criminalintent.database.CrimeCursorWrapper;
 import com.itshizhan.criminalintent.database.CrimeDbSchema.*;
 
 import java.util.ArrayList;
@@ -70,6 +71,17 @@ public class CrimeLab {
 
     // 获取所有数据
     public List<Crime> getCrimes(){
+        List<Crime> crimes = new ArrayList<>();
+        CrimeCursorWrapper crimeCursorWrapper = queryCrimes(null,null);
+        try {
+            crimeCursorWrapper.moveToFirst();
+            while (!crimeCursorWrapper.isAfterLast()){
+                crimes.add(crimeCursorWrapper.getCrime());
+                crimeCursorWrapper.moveToNext();
+            }
+        }finally {
+            crimeCursorWrapper.close();
+        }
         return new ArrayList<>();
     }
 
@@ -82,7 +94,20 @@ public class CrimeLab {
             }
         }
         */
-        return null;
+        CrimeCursorWrapper cursor = queryCrimes(
+                CrimeTable.Cols.UUID + " = ?",
+                new String[] { id.toString() } );
+        try{
+            if(cursor.getCount()==0){
+                return  null;
+            }else{
+                cursor.moveToFirst();
+                return  cursor.getCrime();
+            }
+        }finally {
+            cursor.close();
+        }
+
     }
     //向数据库添加一项新的crime
     public void addCrime(Crime c){
@@ -101,7 +126,7 @@ public class CrimeLab {
     }
 
     //查询数据
-    private Cursor queryCrimes(String whereClause,String [] whereArgs){
+    private Cursor queryCrimesOld(String whereClause,String [] whereArgs){
         Cursor cursor = mSQLiteDatabase.query(
                 CrimeTable.NAME,
                 null, // null : 查询所有列
@@ -112,6 +137,19 @@ public class CrimeLab {
                 null
         );
         return cursor;
+    }
+
+    private CrimeCursorWrapper queryCrimes(String whereClause, String [] whereArgs){
+        Cursor cursor = mSQLiteDatabase.query(
+                CrimeTable.NAME,
+                null, // null : 查询所有列
+                whereClause,
+                whereArgs,
+                null,
+                null,
+                null
+        );
+        return new CrimeCursorWrapper(cursor);
     }
 
 }
