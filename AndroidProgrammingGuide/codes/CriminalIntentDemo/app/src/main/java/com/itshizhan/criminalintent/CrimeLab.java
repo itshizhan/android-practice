@@ -9,6 +9,7 @@ import com.itshizhan.criminalintent.database.CrimeBaseHelper;
 import com.itshizhan.criminalintent.database.CrimeCursorWrapper;
 import com.itshizhan.criminalintent.database.CrimeDbSchema.*;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
@@ -73,6 +74,14 @@ public class CrimeLab {
         } finally {
             cursor.close();
         }
+    }
+
+    // 获取照片文件的存储路径
+    public File getPhotoFile(Crime crime) {
+        // getFilesDir: 获取/data/data/<包名>/files目录
+        // File getDir(String name, int mode): 获取/data/data/<包名>/目录的子目录(如果不存在就先创建它)。
+        File filesDir = mContext.getFilesDir();
+        return new File(filesDir, crime.getPhotoFilename());
     }
 
     public void updateCrime(Crime crime) {

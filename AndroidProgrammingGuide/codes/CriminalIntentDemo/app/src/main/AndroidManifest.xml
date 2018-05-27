@@ -2,6 +2,11 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.itshizhan.criminalintent">
 
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="false"/>
+
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -20,6 +25,16 @@
         <activity android:name=".CrimeActivity"/>
         <activity android:name=".CrimePagerActivity"
             android:parentActivityName=".CrimeListActivity"/>
+
+        <provider
+            android:authorities="com.itshizhan.criminalintent.fileprovider"
+            android:name="android.support.v4.content.FileProvider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/files"/>
+        </provider>
 
     </application>
 
