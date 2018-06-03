@@ -8,8 +8,10 @@
     </data>
 
     <Button android:layout_width="match_parent"
+        style="@style/BeatBoxButton.Strong"
         android:layout_height="120dp"
         android:text="@{viewModel.title}"
+        android:onClick="@{() -> viewModel.onButtonClicked()}"
         tools:text="Sound name"/>
 
 </layout>

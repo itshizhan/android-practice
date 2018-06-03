@@ -13,6 +13,7 @@ import android.view.ViewGroup;
 import com.itshizhan.beatbox.databinding.FragmentBeatBoxBinding;
 import com.itshizhan.beatbox.databinding.ListItemSoundBinding;
 
+import java.io.IOException;
 import java.util.List;
 
 public class BeatBoxFragment extends Fragment {
@@ -40,7 +41,19 @@ public class BeatBoxFragment extends Fragment {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        mBeatBox = new BeatBox(getActivity());
+        try {
+            mBeatBox = new BeatBox(getActivity());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        // 释放资源
+        mBeatBox.release();
     }
 
     private class SoundHolder extends RecyclerView.ViewHolder {
