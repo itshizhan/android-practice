@@ -1,13 +1,14 @@
 package com.itshizhan.nerdlauncher;
 
+import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-public class NerdLauncherActivity extends AppCompatActivity {
+public class NerdLauncherActivity extends SingleFragmentActivity {
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_nerd_launcher);
+    protected Fragment createFragment() {
+        return NerdLauncherFragment.newInstance();
     }
+
 }
