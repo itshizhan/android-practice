@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 //创建适配器Adapter
 public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder> {
@@ -36,6 +37,11 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         holder.mTitleTv.setText("Title " + name);
         holder.mContentTv.setText("content " + name);
 
+        /*
+        int padding = Math.abs(new Random().nextInt() % 100);
+        holder.mTitleTv.setPadding(0, padding, 0, 0);
+        holder.mContentTv.setPadding(0, 0, 0, padding);
+        */
 
     }
 
