@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">TextviewDemo</string>
+    <string name="hello_world">hello World，这个文字很长很长哦！</string>
+    <string name="textview1">带图片的TextView</string>
+    <string name="textview2">带阴影的TextView</string>
+    <string name="auom">邮件： haha@163.com 电话：13800138000 博客：https://www.google.com</string>
+    <string name="tv_marquee">实现跑马灯效果的TextView，实现跑马灯效果的TextView实现跑马灯效果的TextView,实现跑马灯效果的TextView</string>
+</resources>

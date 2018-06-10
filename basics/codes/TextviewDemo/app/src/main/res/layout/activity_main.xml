@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity"
+    android:background="#616151">
+
+    <!--
+
+
+    -->
+
+    <TextView
+        android:id="@+id/tv_one"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:text="@string/hello_world"
+        android:textSize="50sp"
+        android:textAlignment="center"
+        android:gravity="bottom"
+        android:drawablePadding="5dp"
+        android:ellipsize="marquee"
+        android:drawableStart="@drawable/ic_launcher_background"
+        android:layout_marginBottom="5dp"
+        android:background="#ffffff"
+        android:maxLength="5"
+        android:ems="2"
+
+        />
+
+    <TextView
+        android:id="@+id/tv_two"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:text="@string/hello_world"
+        android:textSize="30sp"
+        android:textAlignment="center"
+        android:layout_gravity="bottom"
+        android:gravity="bottom"
+        android:drawablePadding="5dp"
+        android:ellipsize="marquee"
+        android:drawableStart="@drawable/ic_launcher_background"
+        android:background="#ffffff"
+        android:singleLine="true"
+        android:layout_marginBottom="5dp"
+        android:shadowColor="#323232"
+
+
+
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="红色粗体倾斜的TextView"
+        android:textColor="#EA5246"
+        android:textStyle="bold|italic"
+        android:textSize="18sp"
+        android:background="#ffffff"
+        android:layout_marginBottom="5dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="40sp"
+        android:shadowColor="#EA5231"
+        android:shadowDx="5.0"
+        android:shadowDy="6.0"
+        android:shadowRadius="1.0"
+        android:text="@string/textview2"
+        android:background="#ffffff"
+        android:layout_marginBottom="5dp"
+        />
+
+    <!-- 带图片 -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:drawableTop="@mipmap/ic_launcher"
+        android:drawableStart="@mipmap/ic_launcher"
+        android:drawableEnd="@mipmap/ic_launcher"
+        android:drawableBottom="@mipmap/ic_launcher"
+        android:text="@string/textview1"
+        android:background="#ffffff"
+        android:layout_marginBottom="5dp"/>
+
+    <!-- 对邮件、电话、网址增加链接 -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/auom"
+        android:autoLink="email|phone|web"
+        android:background="#ffffff"
+        android:layout_marginBottom="5dp"/>
+
+    <!-- 实现跑马灯效果 -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="30sp"
+        android:singleLine="true"
+        android:ellipsize="marquee"
+        android:marqueeRepeatLimit="marquee_forever"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:text="@string/tv_marquee"
+        android:background="#ffffff"
+        android:layout_marginBottom="5dp"/>
+
+</LinearLayout>
