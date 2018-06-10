@@ -26,7 +26,7 @@ public class HandlerThree extends AppCompatActivity {
             index++;
             index = index % 3;
             mImageView.setImageResource(images[index]);
-            //每个1s执行
+            //每个1s执行,以实现每1秒实现一次的定时器操作
             mHandler.postDelayed(new MyRunnable(), 1000);
         }
     }
