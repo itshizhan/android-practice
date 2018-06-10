@@ -54,11 +54,14 @@ public class HandlerFour extends AppCompatActivity {
             public void run() {
                 try {
                     Thread.sleep(2000);
-                    Message msg = new Message();
+                    // Message msg = new Message();
+                    Message msg = mHandler.obtainMessage();
                     msg.arg1 = 88;
                     msg.obj = "hello";
 
-                    mHandler.sendMessage(msg);
+                    //mHandler.sendMessage(msg);
+                    //或者 sendToTarget 等同于: target.sendMessage(this);
+                    msg.sendToTarget();
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }

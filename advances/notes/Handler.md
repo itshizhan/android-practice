@@ -188,8 +188,89 @@ xml文件：
 java文件：
 
 ```java
+public class HandlerFour extends AppCompatActivity {
+    private TextView mTextView;
+    private Handler mHandler;
+    /*
+    //此方式会报：This Handler class should be static or leaks might occur 警告
+    Handler handler = new Handler(){
+        @Override
+        public void handleMessage(Message msg) {
+            //super.handleMessage(msg);
+            mTextView.setText(""+msg.arg1+"--"+msg.obj);
+        }
+    };
+    */
+    static class MyHandler extends Handler{
+        WeakReference<HandlerFour> mActivity;
+        private MyHandler(HandlerFour activity) {
+            mActivity = new WeakReference<HandlerFour>(activity);
+        }
+        @Override
+        public void handleMessage(Message msg) {
+            super.handleMessage(msg);
+            HandlerFour fourAcitvity = mActivity.get();
+            fourAcitvity.mTextView.setText(""+msg.arg1+"="+msg.obj);
+
+        }
+    }
+    @Override
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_four);
+        mTextView = findViewById(R.id.text_view);
+        mHandler = new MyHandler(this);
+        // 开启线程
+        new Thread(new Runnable() {
+
+            @Override
+            public void run() {
+                try {
+                    Thread.sleep(2000);
+                    // Message msg = new Message();
+                    Message msg = mHandler.obtainMessage();
+                    msg.arg1 = 88;
+                    msg.obj = "hello";
+
+                    //mHandler.sendMessage(msg);
+                    //或者 sendToTarget 等同于: target.sendMessage(this);
+                    msg.sendToTarget();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+
+            }
+        }).start();
+    }
+}
 
 ```
+
+
+
+mHandler.obtainMessage() 实际上返回的是 `Message.obtain(this)`， 而`Message.obtain(this)` 返回的正是`new Message()`;
+
+
+
+
+
+# 4. Handler 与Looper 与MessageQueue
+
+
+
+1)  Handler 主要负责消息的发送，把消息发送给谁
+
+2）Looper相对于消息封装的一个载体，其内部包含一个消息队列即MessageQueue，所有handler发送的消息都走向这个消息队列。
+
+3) Looper.Looper 方法，就是一个死循环，不断的从消息队列MessageQueue中取消息，如果有消息就处理，如果没有消息，就阻塞。
+
+4) MessageQueue 消息队列可以添加消息，并处理消息。
+
+5) Handler 内部会跟Looper进行关联，找到了Looper, 即找到了MessageQueue。在handler中发送消息，其实就是向MessageQueue队列中发送消息。
+
+
+
+> 总结： handler 负责发送消息，Looper负责接收handler发送的消息，并直接把消息回传给handler自己，而MessageQueue就是一个存储消息的容器。
 
 
 
