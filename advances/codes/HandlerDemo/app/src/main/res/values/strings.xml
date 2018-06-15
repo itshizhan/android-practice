@@ -4,4 +4,5 @@
     <string name="end" >end</string>
     <string name="hello_handler">hello handler</string>
     <string name="update_view_text">更新textview</string>
+    <string name="textview">TextView</string>
 </resources>

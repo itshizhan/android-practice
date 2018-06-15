@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/buttondemo"
+        android:textColor="@android:color/holo_red_dark"
+        android:textSize="30sp" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:alpha="0.4"
+        android:text="@string/app_name"
+        android:background="@mipmap/ic_launcher_round"
+        />
+
+    <!-- 普通文字按钮 -->
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="普通按钮"
+        android:textSize="16sp"
+        android:textColor="#ff00ff"/>
+
+    <!-- 图片按钮-->
+    <Button
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:background="@mipmap/ic_launcher_round"  />
+
+    <!-- 带文字的图片按钮-->
+    <Button
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:background="@mipmap/ic_launcher_round"
+        android:textSize="18sp"
+        android:text="开始"/>
+
+</LinearLayout>

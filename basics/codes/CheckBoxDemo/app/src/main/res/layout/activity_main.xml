@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="选择喜欢的城市"/>
+
+
+    <CheckBox
+        android:id="@+id/shanghai_cb"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:checked="true"
+        android:drawableStart="@android:drawable/checkbox_on_background"
+        android:text="上海" />
+
+    <CheckBox
+        android:id="@+id/beijing_cb"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="北京"/>
+
+    <CheckBox
+        android:id="@+id/chongqing_cb"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="重庆"
+        android:button="@drawable/checkbox_style"/>
+
+
+
+</LinearLayout>
