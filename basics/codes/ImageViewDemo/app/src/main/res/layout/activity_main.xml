@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <!--
+    android:src和android:background，其中background通常指的是背景，而src指的是内容。
+    另外当使用src填入图片时,是按照图片大小直接填充，并不会进行拉伸，而使用background填入图片，则是会根据ImageView给定的宽度来进行拉伸。
+    -->
+
+    <!--android:scaleType属性:
+    matrix ( ImageView.ScaleType.MATRIX)：使用 matrix 方式进行缩放。
+    fitXY ( lmageView.ScaleType.FIT_XY)：对图片横向、纵向独立缩放，使得该图片完全适应于该ImageView,图片的纵横比可能会改变。
+    fitStart (ImageView.ScaleType.FIT_START )：保持纵横比缩放图片，直到该图片能完全显示在ImageView中（图片较长的边长与ImageView相应的边长相等）,缩放完成后将该图片放在ImageView的左上角。
+    fitCenter (ImageView.ScaleType.FIT_CENTER )：保持纵横比缩放图片，直到该图片能完全显示在ImageView中（图片较长的边长与ImageView相应的边长相等）， 缩放完成后将该图片放在ImageView的中央。
+    fitEnd (ImageView.ScaleType.FIT_END )：保持纵横比缩放图片，直到该图片能完全显示在ImageView中（图片较长的边长与ImageView相应的边长相等），缩放完成后将该图片放在ImageView的右下角。
+    center ( ImageView.ScaleType.CENTER)：把图片放在 ImageView 的中间，但不进行任何缩放。
+    centerCrop ( ImageView.ScaleType.CENTER_CROP)：保持纵横比缩放图片，以使得图片能完全覆盖ImageView。只要图片的最短边能显示出来即可。
+    centerlnside (ImageView.ScaleType.CENTER_INSIDE )：保持纵横比缩放图片，以使得ImageView能完全显示该图片。
+    -->
+
+    <!--
+    为了控制ImageView显示的图片，ImageView提供了如下方法。
+
+    setlmageBitmap(Bitmap bm)：使用 Bitmap 位图设置该 ImageView 显示的图片。
+    setlmageDrawable(Drawable drawable)：使用 Drawable 对象设置该 ImageView 显示的图片。
+    setlmageResource(int resld)：使用图片资源ID设置该ImageView显示的图片。
+    setlmageURI(Uri uri)：使用图片的URI设置该ImageView显示的图片。
+
+    -->
+    <ImageView
+        android:id="@+id/image_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:contentDescription="@string/app_name"
+        android:scaleType="fitCenter"
+        android:src="@mipmap/img22" />
+
+    <ImageButton
+        android:id="@+id/image_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:contentDescription="@string/app_name"
+        android:src="@mipmap/img33"
+        android:scaleType="fitXY"/>
+
+
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:background="@color/colorPrimary">
+
+        <ZoomButton
+            android:id="@+id/minus_zb"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:scaleType="fitStart"
+            android:src="@android:drawable/btn_minus"/>
+
+        <ZoomButton
+            android:id="@+id/plus_zb"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:scaleType="fitCenter"
+            android:src="@android:drawable/btn_plus"/>
+    </LinearLayout>
+
+    <ZoomControls
+        android:id="@+id/control_zc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+</LinearLayout>
