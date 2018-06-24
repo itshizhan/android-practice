@@ -1,4 +1,4 @@
-package com.itshizhan.viewcustomdemo;
+package com.itshizhan.relativelayoutdemo;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -8,6 +8,6 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.counterview_layout);
+        setContentView(R.layout.activity_main);
     }
 }

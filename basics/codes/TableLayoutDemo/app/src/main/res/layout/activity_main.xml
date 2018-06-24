@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+   <TableLayout
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:shrinkColumns="1"
+       android:stretchColumns="2">
+       <!-- 直接添加按钮，它自己会占一行 -->
+       <Button
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:text="独自一行的按钮"/>
+       <!-- 添加一个表格行 -->
+       <TableRow>
+           <!-- 为该表格行添加三个按钮 -->
+           <Button
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:text="普通按钮"/>
+           <Button
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:text="收缩的按钮"/>
+           <Button
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:text="拉伸的按钮"/>
+       </TableRow>
+
+
+   </TableLayout>
+
+    <!-- 定义第2个表格布局 ，指定第2列隐藏-->
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:collapseColumns="1"
+        android:background="@color/colorPrimary">
+        <!-- 添加一个表格行 -->
+        <TableRow>
+            <!-- 为该表格行添加三个按钮 -->
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="普通按钮1"/>
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="普通按钮2"/>
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="普通按钮3"/>
+        </TableRow>
+        <TableRow>
+            <!-- 为该表格行添加三个按钮 -->
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="普通按钮1"/>
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="普通按钮2"/>
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="普通按钮3"/>
+        </TableRow>
+
+
+    </TableLayout>
+
+</LinearLayout>

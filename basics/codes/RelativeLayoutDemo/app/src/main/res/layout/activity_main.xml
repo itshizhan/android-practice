@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Hello World! Hello center"
+        android:layout_centerInParent="true"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="容器左上侧"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="容器右上侧"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="左中"
+        android:layout_alignParentLeft="true"
+        android:layout_centerVertical="true"/>
+
+    <!-- 定义该组件位于父容器中间 -->
+    <Button
+        android:id="@+id/center_btn"
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:text="容器中央"
+        android:layout_centerInParent="true"/>
+
+    <Button
+        android:id="@+id/center_top_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="中上靠右边"
+        android:layout_above="@id/center_btn"
+        android:layout_alignRight="@id/center_btn"/>
+
+
+</RelativeLayout>
