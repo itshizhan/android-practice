@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">ViewFlipperDemo</string>
+    <string name="sutoplay">自动播放</string>
+    <string name="prev"><![CDATA[<]]></string>
+    <string name="next"><![CDATA[>]]></string>
+</resources>

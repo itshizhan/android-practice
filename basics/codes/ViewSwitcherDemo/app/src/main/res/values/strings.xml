@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">ViewSwitcherDemo</string>
+    <string name="prev">prev</string>
+    <string name="next">next</string>
+</resources>
