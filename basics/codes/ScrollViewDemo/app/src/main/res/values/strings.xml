@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">ScrollViewDemo</string>
+    <string name="description">
+
+        Container(容器)是一种轻量级的虚拟化技术，它不需要模拟硬件创建虚拟机。在Linux系统里面，使用到Linux kernel的cgroups，namespace(ipc，network， user，pid，mount），capability等用于隔离运行环境和资源限制的技术，我们称之为容器。容器技术早就出现。例如Solaris Zones 和 BSD jails 就是非 Linux 操作系统上的容器，而用于 Linux 的容器技术也有很多如 Linux-Vserver、OpenVZ 和 FreeVPS。虽然这些技术都已经成熟，但是这些解决方案还没有将它们的容器支持集成到主流 Linux 内核。总的来说，容器不等同于Docker，容器更不是虚拟机。
+
+LXC项目由一个 Linux 内核补丁和一些 userspace 工具组成，它提供一套简化的工具来维护容器，用于虚拟环境的环境隔离、资源限制以及权限控制。LXC有点类似chroot，但是它比chroot提供了更多的隔离性。
+
+    </string>
+</resources>
