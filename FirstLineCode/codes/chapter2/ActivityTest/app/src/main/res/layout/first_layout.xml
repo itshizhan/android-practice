@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/textview"
+        android:textSize="30sp"/>
+
+    <Button
+        android:id="@+id/btn_a"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/app_name"
+        android:onClick="btnClickHandle"/>
+
+    <Button
+        android:id="@+id/btn_b"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/startchrome"
+        android:paddingTop="10dp"
+        android:onClick="btnClickHandle"/>
+
+    <Button
+        android:id="@+id/btn_c"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/sendDataActivitythree"
+        android:paddingTop="10dp"
+        android:onClick="btnClickHandle"/>
+
+    <Button
+        android:id="@+id/btn_d"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/getmedata"
+        android:paddingTop="10dp"
+        android:onClick="btnClickHandle"/>
+
+</LinearLayout>
