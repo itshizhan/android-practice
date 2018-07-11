@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">UIWidgetTest</string>
+    <string name="control_progressbar">control progressBar</string>
+    <string name="alertdialog">显示alertDialog</string>
+    <string name="progressbar">测试progressBar可见性</string>
+    <string name="showprogressdialog">showProgressDialog</string>
+</resources>

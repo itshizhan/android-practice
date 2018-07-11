@@ -2,6 +2,7 @@ package com.itshizhan.activitytest;
 
 import android.content.Intent;
 import android.net.Uri;
+import android.os.Process;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -10,7 +11,7 @@ import android.widget.Toast;
 
 import javax.xml.transform.Result;
 
-public class ThirdActivity extends AppCompatActivity {
+public class ThirdActivity extends BaseActivity {
 
     String data;
     TextView textView;
@@ -50,6 +51,9 @@ public class ThirdActivity extends AppCompatActivity {
 
         }else if(view.getId() == R.id.button_three){
             Toast.makeText(ThirdActivity.this,"three",Toast.LENGTH_SHORT).show();
+            ActivityCollector.finishAll();
+            //Process.killProcess(Process.myPid());
+            //finish();
         }
 
 

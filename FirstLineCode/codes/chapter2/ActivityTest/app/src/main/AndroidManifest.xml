@@ -31,6 +31,7 @@
                 <data android:scheme="http"/>
             </intent-filter>
         </activity>
+        <activity android:name=".BaseActivity" />
     </application>
 
 </manifest>
