@@ -12,7 +12,9 @@ import android.widget.Toast;
 public class TittleLayout extends LinearLayout {
     public TittleLayout(Context context, AttributeSet attributeSet) {
         super(context,attributeSet);
+
         LayoutInflater.from(context).inflate(R.layout.title,this);
+
         Button backBtn = (Button)findViewById(R.id.title_back);
         backBtn.setOnClickListener(new View.OnClickListener(){
             @Override
