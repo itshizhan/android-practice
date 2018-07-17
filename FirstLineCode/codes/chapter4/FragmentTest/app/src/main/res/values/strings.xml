@@ -2,4 +2,6 @@
     <string name="app_name">FragmentTest</string>
     <string name="this_is_right_fragment">This is right fragment</string>
     <string name="this_is_anthor_right_fragment">this is anthor right fragment</string>
+    <string name="text_will_change">text will change</string>
+    <string name="hello_world">hello world</string>
 </resources>
