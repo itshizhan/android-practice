@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">BroadCastTestTwo</string>
+    <string name="sendbroadcast">SendBroadCast</string>
+</resources>

@@ -37,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
     public void sendBroadCast(View view) {
 //        Toast.makeText(MainActivity.this,
 //                "发送广播",Toast.LENGTH_SHORT).show();
-        Intent intent = new Intent("android.intent.action.MY_BROADCAST");
+        Intent intent = new Intent("com.itshizhan.broadcasttest.MY_BROADCAST");
         sendBroadcast(intent);
     }
 
