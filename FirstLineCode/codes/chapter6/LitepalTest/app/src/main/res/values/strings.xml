@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">LitepalTest</string>
+    <string name="create_database">CREATE DATABASE</string>
+    <string name="add_data">ADD DATA</string>
+    <string name="query_data">QUERY DATA</string>
+</resources>
