@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">SharedPreferencesTest</string>
+    <string name="save_data">SAVE DATA</string>
+    <string name="restore_date">Restore Date</string>
+</resources>
