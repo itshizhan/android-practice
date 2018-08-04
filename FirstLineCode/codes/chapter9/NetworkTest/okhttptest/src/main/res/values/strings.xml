@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">OkhttpTest</string>
+    <string name="send_request">Send Request</string>
+</resources>
