@@ -2,9 +2,14 @@ package com.itshizhan.okhttptest;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -19,6 +24,11 @@ import okhttp3.Response;
 
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
+
+
+    private static final String TAG = "MainActivity";
+    public static final String URL = "https://api.douban.com/v2/book/17604305";
+
 
     TextView textView;
 
@@ -58,15 +68,42 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private void doOkhttp() {
         OkHttpClient okHttpClient = new OkHttpClient();
-        Request request = new Request.Builder().url("https://www.baidu.com").build();
+        Request request = new Request.Builder().url(URL).build();
 
         try {
             Response response = okHttpClient.newCall(request).execute();
             String resData = response.body().string();
-            showResponse(resData);
+
+            //showResponse(resData);
+            parsonJsonWithJsonObject(resData);
         } catch (IOException e) {
             e.printStackTrace();
         }
+
+    }
+
+    private void parsonJsonWithJsonObject(String jsonData) {
+        Log.d(TAG,jsonData);
+        try {
+            JSONObject jsonObject = new JSONObject(jsonData);
+            //String title = jsonObject.getString("subtitle");
+            //showResponse(title);
+            String tags = jsonObject.getString("tags");
+            JSONArray jsonArray = new JSONArray(tags);
+
+            StringBuilder stringBuilder = new StringBuilder();
+
+            for(int i=0;i<jsonArray.length();i++){
+                JSONObject tagObj = jsonArray.getJSONObject(i);
+                String name = tagObj.getString("name");
+                stringBuilder.append(name+"\n");
+                showResponse(stringBuilder.toString());
+            }
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
 
     }
 
