@@ -5,4 +5,9 @@
     <string name="delete">delete</string>
     <string name="setting" />
     <string name="this_is_menu">This is Menu</string>
+    <string name="call">Call</string>
+    <string name="friends">friends</string>
+    <string name="location">location</string>
+    <string name="itshizhan_163_com">itshizhan@163.com</string>
+    <string name="itshizhan">ITshizhan</string>
 </resources>
