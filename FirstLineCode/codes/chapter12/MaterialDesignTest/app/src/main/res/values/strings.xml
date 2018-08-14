@@ -1,4 +1,8 @@
 <resources>
     <string name="app_name">MaterialDesignTest--haha</string>
     <string name="fruit">Fruit</string>
+    <string name="backup">Backup</string>
+    <string name="delete">delete</string>
+    <string name="setting" />
+    <string name="this_is_menu">This is Menu</string>
 </resources>
