@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">FragmentDemo</string>
+    <string name="activity">我是Activity</string>
+    <string name="fragment">我是fragment</string>
+    <string name="fragment_text_view">等待Activity发送消息</string>
+    <string name="fragment_button_text">点击接收Activity消息</string>
+</resources>
