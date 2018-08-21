@@ -34,6 +34,7 @@ import okhttp3.Response;
 public class ChooseAreaFragment extends Fragment {
     private static final String TAG = "ChooseAreaFragment";
 
+    // 定义当前展示的地区flag：省、市还是县
     public static final int LEVEL_PROVINCE = 0;
 
     public static final int LEVEL_CITY = 1;
@@ -42,12 +43,14 @@ public class ChooseAreaFragment extends Fragment {
 
     private ProgressDialog progressDialog;
 
+    // 初始化组件
     private TextView titleText;
 
     private Button backButton;
 
     private ListView listView;
 
+    // listview 适配器
     private ArrayAdapter<String> adapter;
 
     private List<String> dataList = new ArrayList<>();
